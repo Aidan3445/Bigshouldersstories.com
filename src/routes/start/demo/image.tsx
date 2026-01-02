@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { createFileRoute } from '@tanstack/react-router'
-import { ImageIcon, Loader2, Download } from 'lucide-react'
+import { Download, ImageIcon, Loader2 } from 'lucide-react'
 
 const SIZES = ['1024x1024', '1536x1024', '1024x1536', 'auto']
 
@@ -251,6 +251,6 @@ function ImagePage() {
   )
 }
 
-export const Route = createFileRoute('/demo/image')({
+export const Route = createFileRoute('/start/demo/image')({
   component: ImagePage,
 })

@@ -1,11 +1,11 @@
 import { createFileRoute } from '@tanstack/react-router'
 import type { Provider } from '@/lib/model-selection'
 
-export const Route = createFileRoute('/demo/api/available-providers')({
+export const Route = createFileRoute('/start/demo/api/available-providers')({
   server: {
     handlers: {
-      GET: async () => {
-        const available: Provider[] = []
+      GET: () => {
+        const available: Array<Provider> = []
 
         if (process.env.OPENAI_API_KEY) {
           available.push('openai')

@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { createFileRoute } from '@tanstack/react-router'
-import { ChefHat, Loader2, Clock, Users, Gauge } from 'lucide-react'
+import { ChefHat, Clock, Gauge, Loader2, Users } from 'lucide-react'
 import { Streamdown } from 'streamdown'
 
 import type { Recipe } from './api.structured'
@@ -165,7 +165,9 @@ function StructuredPage() {
   } | null>(null)
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const [availableProviders, setAvailableProviders] = useState<Provider[]>([])
+  const [availableProviders, setAvailableProviders] = useState<Array<Provider>>(
+    [],
+  )
   const [isCheckingProviders, setIsCheckingProviders] = useState(true)
 
   // Fetch available providers
@@ -455,6 +457,6 @@ function StructuredPage() {
   )
 }
 
-export const Route = createFileRoute('/demo/structured')({
+export const Route = createFileRoute('/start/demo/structured')({
   component: StructuredPage,
 })

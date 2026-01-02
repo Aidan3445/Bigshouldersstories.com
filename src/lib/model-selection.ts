@@ -67,12 +67,14 @@ export function getDefaultModelOption(): ModelOption {
   return getStoredModelPreference() || MODEL_OPTIONS[0]
 }
 
-export function getModelOptionsForProvider(provider: Provider): ModelOption[] {
+export function getModelOptionsForProvider(
+  provider: Provider,
+): Array<ModelOption> {
   return MODEL_OPTIONS.filter((o) => o.provider === provider)
 }
 
 export function getAvailableModelOptions(
-  availableProviders: Provider[],
-): ModelOption[] {
+  availableProviders: Array<Provider>,
+): Array<ModelOption> {
   return MODEL_OPTIONS.filter((o) => availableProviders.includes(o.provider))
 }

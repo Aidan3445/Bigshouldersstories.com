@@ -1,25 +1,25 @@
 import { useEffect, useRef, useState } from 'react'
 import { createFileRoute } from '@tanstack/react-router'
 import {
-  Send,
-  Square,
+  Loader2,
   Mic,
   MicOff,
+  Send,
+  Square,
   Volume2,
   VolumeX,
-  Loader2,
 } from 'lucide-react'
 import { Streamdown } from 'streamdown'
 
-import { useGuitarRecommendationChat } from '@/lib/example.ai-hook'
 import type { ChatMessages } from '@/lib/example.ai-hook'
+import type { ModelOption, Provider } from '@/lib/model-selection'
+import { useGuitarRecommendationChat } from '@/lib/example.ai-hook'
 import {
   MODEL_OPTIONS,
   getAvailableModelOptions,
   getStoredModelPreference,
   setStoredModelPreference,
 } from '@/lib/model-selection'
-import type { Provider, ModelOption } from '@/lib/model-selection'
 import { hasCapability } from '@/lib/vendor-capabilities'
 import { useAudioRecorder } from '@/hooks/useAudioRecorder'
 import { useTTS } from '@/hooks/useTTS'
@@ -112,11 +112,11 @@ function Messages({
             >
               <div className="flex items-start gap-4 max-w-3xl mx-auto w-full">
                 {message.role === 'assistant' ? (
-                  <div className="w-8 h-8 rounded-lg bg-linear-to-r from-orange-500 to-red-600 mt-2 flex items-center justify-center text-sm font-medium text-white flex-shrink-0">
+                  <div className="w-8 h-8 rounded-lg bg-linear-to-r from-orange-500 to-red-600 mt-2 flex items-center justify-center text-sm font-medium text-white shrink-0">
                     AI
                   </div>
                 ) : (
-                  <div className="w-8 h-8 rounded-lg bg-gray-700 flex items-center justify-center text-sm font-medium text-white flex-shrink-0">
+                  <div className="w-8 h-8 rounded-lg bg-gray-700 flex items-center justify-center text-sm font-medium text-white shrink-0">
                     Y
                   </div>
                 )}
@@ -135,12 +135,12 @@ function Messages({
                     // Guitar recommendation card
                     if (
                       part.type === 'tool-call' &&
-                      part.name === 'recommendGuitar' &&
+                      // part.name === 'recommendGuitar' &&
                       part.output
                     ) {
                       return (
                         <div key={part.id} className="max-w-[80%] mx-auto">
-                          <GuitarRecommendation id={String(part.output?.id)} />
+                          <GuitarRecommendation id={String(part.output.id)} />
                         </div>
                       )
                     }
@@ -155,7 +155,7 @@ function Messages({
                         ? onStopSpeak()
                         : onSpeak(textContent, message.id)
                     }
-                    className="flex-shrink-0 p-2 text-gray-400 hover:text-orange-400 transition-colors"
+                    className="shrink-0 p-2 text-gray-400 hover:text-orange-400 transition-colors"
                     title={isPlaying ? 'Stop speaking' : 'Read aloud'}
                   >
                     {isPlaying ? (
@@ -176,7 +176,9 @@ function Messages({
 
 function ChatPage() {
   const [input, setInput] = useState('')
-  const [availableProviders, setAvailableProviders] = useState<Provider[]>([])
+  const [availableProviders, setAvailableProviders] = useState<Array<Provider>>(
+    [],
+  )
   const [selectedModel, setSelectedModel] = useState<ModelOption | null>(null)
   const [isCheckingProviders, setIsCheckingProviders] = useState(true)
 
@@ -225,10 +227,7 @@ function ChatPage() {
     selectedModel && hasCapability(selectedModel.provider, 'transcription')
 
   const { messages, sendMessage, isLoading, stop } =
-    useGuitarRecommendationChat(
-      selectedModel?.provider || 'anthropic',
-      selectedModel?.model || 'claude-haiku-4-5',
-    )
+    useGuitarRecommendationChat()
 
   const handleModelChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selected = availableModelOptions.find(
@@ -402,6 +401,6 @@ function ChatPage() {
   )
 }
 
-export const Route = createFileRoute('/demo/tanchat')({
+export const Route = createFileRoute('/start/demo/tanchat')({
   component: ChatPage,
 })

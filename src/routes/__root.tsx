@@ -8,7 +8,7 @@ import { TanStackDevtools } from '@tanstack/react-devtools'
 
 import Header from '../components/Header'
 
-import ClerkProvider from '../integrations/clerk/provider'
+// import ClerkProvider from '../integrations/clerk/provider'
 
 import AiDevtools from '../lib/ai-devtools'
 
@@ -56,24 +56,22 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body>
-        <ClerkProvider>
-          <Header />
-          {children}
-          <TanStackDevtools
-            config={{
-              position: 'bottom-right',
-            }}
-            plugins={[
-              {
-                name: 'Tanstack Router',
-                render: <TanStackRouterDevtoolsPanel />,
-              },
-              AiDevtools,
-              TanStackQueryDevtools,
-              StoreDevtools,
-            ]}
-          />
-        </ClerkProvider>
+        <Header />
+        {children}
+        <TanStackDevtools
+          config={{
+            position: 'bottom-right',
+          }}
+          plugins={[
+            {
+              name: 'Tanstack Router',
+              render: <TanStackRouterDevtoolsPanel />,
+            },
+            AiDevtools,
+            TanStackQueryDevtools,
+            StoreDevtools,
+          ]}
+        />
         <Scripts />
       </body>
     </html>

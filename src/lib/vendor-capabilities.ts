@@ -43,13 +43,13 @@ export function hasCapability(
   provider: Provider,
   capability: keyof VendorCapabilities,
 ): boolean {
-  return VENDOR_CAPABILITIES[provider]?.[capability] ?? false
+  return VENDOR_CAPABILITIES[provider][capability]
 }
 
 export function getProvidersWithCapability(
   capability: keyof VendorCapabilities,
-): Provider[] {
-  return (Object.keys(VENDOR_CAPABILITIES) as Provider[]).filter(
+): Array<Provider> {
+  return (Object.keys(VENDOR_CAPABILITIES) as Array<Provider>).filter(
     (provider) => VENDOR_CAPABILITIES[provider][capability],
   )
 }

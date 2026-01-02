@@ -5,8 +5,8 @@ import { openaiText } from '@tanstack/ai-openai'
 import { geminiText } from '@tanstack/ai-gemini'
 import { ollamaText } from '@tanstack/ai-ollama'
 
-import { getGuitars, recommendGuitarToolDef } from '@/lib/example.guitar-tools'
 import type { Provider } from '@/lib/model-selection'
+import { getGuitars, recommendGuitarToolDef } from '@/lib/example.guitar-tools'
 
 const SYSTEM_PROMPT = `You are a helpful assistant for a store that sells guitars.
 
@@ -25,7 +25,7 @@ IMPORTANT:
 - Do NOT describe the guitar yourself - let the recommendGuitar tool do it
 `
 
-export const Route = createFileRoute('/demo/api/tanchat')({
+export const Route = createFileRoute('/start/demo/api/tanchat')({
   server: {
     handlers: {
       POST: async ({ request }) => {
