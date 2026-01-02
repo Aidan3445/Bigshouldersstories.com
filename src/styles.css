@@ -136,3 +136,33 @@ code {
     @apply bg-background text-foreground;
   }
 }
+
+/* In your global.css or styles.css */
+
+@layer components {
+  /* Blue theme */
+  .section-blue {
+    @apply p-8 text-center bg-sky-700 text-white;
+  }
+  
+  .title-blue {
+    @apply text-5xl font-extrabold text-white mb-4;
+  }
+  
+  .body-blue {
+    @apply text-2xl font-bold text-gray-200 max-w-xl;
+  }
+
+  /* White theme */
+  .section-white {
+    @apply p-8 text-center bg-white text-gray-800;
+  }
+  
+  .title-white {
+    @apply text-5xl font-extrabold text-sky-700 mb-4;
+  }
+  
+  .body-white {
+    @apply text-xl font-bold text-gray-700 max-w-xl;
+  }
+}

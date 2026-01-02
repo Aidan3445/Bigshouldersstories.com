@@ -1,0 +1,25 @@
+import Socials from "../footer/socials";
+import copy from "@/lib/copy";
+
+export default function WhatsYourStory() {
+  return (
+    <section className="section-white">
+      <h1 className="title-white">
+        {copy.common.sections.contact.title}
+      </h1>
+      <p className="body-white mx-auto max-w-none">
+        {copy.common.sections.contact.body[0]}{' '}
+        <a
+          href={copy.common.sections.contact.links[0].href}
+          className="text-blue-600 underline"
+        >
+          {copy.common.sections.contact.links[0].text}
+        </a>
+        .
+        <br />
+        {copy.common.sections.contact.body[1]}
+      </p>
+      <Socials />
+    </section>
+  );
+}
