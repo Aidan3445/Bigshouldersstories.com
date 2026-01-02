@@ -1,7 +1,7 @@
 import Facebook from "./facebook";
 import Instagram from "./instagram";
 import Linkedin from "./linkedin";
-import YouTube from "./youtube";
+import YouTube from "./youTube";
 import copy from "@/lib/copy";
 
 export default function Socials() {

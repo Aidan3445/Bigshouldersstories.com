@@ -1,3 +1,4 @@
+import { Link } from '@tanstack/react-router';
 import { Button } from '@/components/ui/button';
 import copy from '@/lib/copy';
 
@@ -10,12 +11,16 @@ export default function Header() {
         {copy.home.header.headerText}
       </h1>
       <span className="flex gap-4 flex-wrap justify-center">
-        <Button className="bg-blue-900 hover:bg-blue-700 text-white font-bold text-lg w-60">
-          {copy.home.header.navigation.production}
-        </Button>
-        <Button className="bg-blue-900 hover:bg-blue-700 text-white font-bold text-lg w-60">
-          {copy.home.header.navigation.individual}
-        </Button>
+        <Link to="/community-voices">
+          <Button className="bg-blue-900 hover:bg-blue-700 text-white font-bold text-lg w-60">
+            {copy.home.header.navigation.production}
+          </Button>
+        </Link>
+        <Link to="/"> {/* "/individual-voices">*/}
+          <Button className="bg-blue-900 hover:bg-blue-700 text-white font-bold text-lg w-60">
+            {copy.home.header.navigation.individual}
+          </Button>
+        </Link>
       </span>
     </section>
   );

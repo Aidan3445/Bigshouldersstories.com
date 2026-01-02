@@ -12,7 +12,7 @@ export default function WhyStoriesMatter() {
           <h1 className="title-blue">
             {copy.home.sections.whyStoriesMatter.title}
           </h1>
-          <p className="body-blue mb-4">
+          <p className="body-blue mb-4 text-left">
             {copy.home.sections.whyStoriesMatter.body[0]}
           </p>
           <p className="body-blue italic text-right">
