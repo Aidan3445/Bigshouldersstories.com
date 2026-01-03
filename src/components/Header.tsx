@@ -2,6 +2,7 @@ import { Link } from '@tanstack/react-router'
 
 import { useState } from 'react'
 import { Mail, Menu, MicVocal, NotebookPen, Quote, Users, X } from 'lucide-react'
+import { cn } from '@/lib/utils'
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
@@ -11,7 +12,7 @@ export default function Header() {
       <header className="p-4 h-16 flex items-center bg-white text-black shadow-lg fixed top-0 left-0 right-0 z-40">
         <button
           onClick={() => setIsOpen(true)}
-          className="p-2 hover:bg-gray-200 rounded-lg transition-colors"
+          className="p-2 hover:bg-gray-300 rounded-lg transition-colors"
           aria-label="Open menu">
           <Menu size={24} />
         </button>
@@ -25,10 +26,18 @@ export default function Header() {
           </Link>
         </h1>
       </header>
+      <div
+        className={cn(
+          "fixed inset-0 bg-black/50 z-40 transition-opacity",
+          !isOpen && "pointer-events-none opacity-0"
+        )}
+        onClick={() => setIsOpen(false)}
+        aria-hidden="true"
+      />
       <aside
         className={`fixed top-0 left-0 h-full w-80 bg-gray-100 text-black shadow-2xl z-50 transform transition-transform duration-300 ease-in-out flex flex-col ${isOpen ? 'translate-x-0' : '-translate-x-full'
           }`}>
-        <div className="flex items-center justify-between p-4 border-b border-gray-700">
+        <div className="flex items-center justify-between h-16 p-4">
           <button
             onClick={() => setIsOpen(false)}
             className="p-2 hover:bg-gray-300 rounded-lg transition-colors"
