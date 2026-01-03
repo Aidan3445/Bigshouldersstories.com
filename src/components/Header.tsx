@@ -30,7 +30,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="p-4 flex items-center bg-white text-black shadow-lg">
+      <header className="p-4 h-16 flex items-center bg-white text-black shadow-lg fixed top-0 left-0 right-0 z-40">
         <button
           onClick={() => setIsOpen(true)}
           className="p-2 hover:bg-gray-200 rounded-lg transition-colors"

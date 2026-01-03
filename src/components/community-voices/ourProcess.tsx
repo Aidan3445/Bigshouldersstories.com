@@ -2,12 +2,12 @@ import copy from "@/lib/copy";
 
 export default function OurProcess() {
   return (
-    <section className="section-white">
+    <section className="section-white flex flex-col items-center">
       <h1 className="title-white">
         {copy["community-voices"].sections.ourProcess.title}
       </h1>
-      <div className="flex flex-col justify-center items-center">
-        <p className="body-white mx-auto text-left">
+      <div className="flex flex-col">
+        <p className="body-white text-left">
           {copy["community-voices"].sections.ourProcess.body[0]}
         </p>
         <ul className="body-white list-disc text-left">

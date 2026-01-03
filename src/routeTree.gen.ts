@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as StartIndexRouteImport } from './routes/start/index'
+import { Route as ProductionsIndexRouteImport } from './routes/productions/index'
 import { Route as CommunityVoicesIndexRouteImport } from './routes/community-voices/index'
 import { Route as StartDemoTanstackQueryRouteImport } from './routes/start/demo/tanstack-query'
 import { Route as StartDemoTanchatRouteImport } from './routes/start/demo/tanchat'
@@ -48,6 +49,11 @@ const IndexRoute = IndexRouteImport.update({
 const StartIndexRoute = StartIndexRouteImport.update({
   id: '/start/',
   path: '/start/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductionsIndexRoute = ProductionsIndexRouteImport.update({
+  id: '/productions/',
+  path: '/productions/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CommunityVoicesIndexRoute = CommunityVoicesIndexRouteImport.update({
@@ -203,6 +209,7 @@ const StartDemoStartSsrDataOnlyRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/community-voices': typeof CommunityVoicesIndexRoute
+  '/productions': typeof ProductionsIndexRoute
   '/start': typeof StartIndexRoute
   '/start/demo/clerk': typeof StartDemoClerkRoute
   '/start/demo/db-chat': typeof StartDemoDbChatRoute
@@ -235,6 +242,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/community-voices': typeof CommunityVoicesIndexRoute
+  '/productions': typeof ProductionsIndexRoute
   '/start': typeof StartIndexRoute
   '/start/demo/clerk': typeof StartDemoClerkRoute
   '/start/demo/db-chat': typeof StartDemoDbChatRoute
@@ -268,6 +276,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/community-voices/': typeof CommunityVoicesIndexRoute
+  '/productions/': typeof ProductionsIndexRoute
   '/start/': typeof StartIndexRoute
   '/start/demo/clerk': typeof StartDemoClerkRoute
   '/start/demo/db-chat': typeof StartDemoDbChatRoute
@@ -302,6 +311,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/community-voices'
+    | '/productions'
     | '/start'
     | '/start/demo/clerk'
     | '/start/demo/db-chat'
@@ -334,6 +344,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/community-voices'
+    | '/productions'
     | '/start'
     | '/start/demo/clerk'
     | '/start/demo/db-chat'
@@ -366,6 +377,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/community-voices/'
+    | '/productions/'
     | '/start/'
     | '/start/demo/clerk'
     | '/start/demo/db-chat'
@@ -399,6 +411,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CommunityVoicesIndexRoute: typeof CommunityVoicesIndexRoute
+  ProductionsIndexRoute: typeof ProductionsIndexRoute
   StartIndexRoute: typeof StartIndexRoute
   StartDemoClerkRoute: typeof StartDemoClerkRoute
   StartDemoDbChatRoute: typeof StartDemoDbChatRoute
@@ -443,6 +456,13 @@ declare module '@tanstack/react-router' {
       path: '/start'
       fullPath: '/start'
       preLoaderRoute: typeof StartIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/productions/': {
+      id: '/productions/'
+      path: '/productions'
+      fullPath: '/productions'
+      preLoaderRoute: typeof ProductionsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/community-voices/': {
@@ -647,6 +667,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CommunityVoicesIndexRoute: CommunityVoicesIndexRoute,
+  ProductionsIndexRoute: ProductionsIndexRoute,
   StartIndexRoute: StartIndexRoute,
   StartDemoClerkRoute: StartDemoClerkRoute,
   StartDemoDbChatRoute: StartDemoDbChatRoute,

@@ -97,5 +97,10 @@ export default {
         ]
       }
     }
+  },
+  productions: {
+    header: {
+      headerText: "Past projects and events",
+    }
   }
 }
