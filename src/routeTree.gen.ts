@@ -10,8 +10,10 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as TestimonialsIndexRouteImport } from './routes/testimonials/index'
 import { Route as StartIndexRouteImport } from './routes/start/index'
 import { Route as ProductionsIndexRouteImport } from './routes/productions/index'
+import { Route as ContactIndexRouteImport } from './routes/contact/index'
 import { Route as CommunityVoicesIndexRouteImport } from './routes/community-voices/index'
 import { Route as CoachingIndexRouteImport } from './routes/coaching/index'
 import { Route as StartDemoTanstackQueryRouteImport } from './routes/start/demo/tanstack-query'
@@ -47,6 +49,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TestimonialsIndexRoute = TestimonialsIndexRouteImport.update({
+  id: '/testimonials/',
+  path: '/testimonials/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const StartIndexRoute = StartIndexRouteImport.update({
   id: '/start/',
   path: '/start/',
@@ -55,6 +62,11 @@ const StartIndexRoute = StartIndexRouteImport.update({
 const ProductionsIndexRoute = ProductionsIndexRouteImport.update({
   id: '/productions/',
   path: '/productions/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactIndexRoute = ContactIndexRouteImport.update({
+  id: '/contact/',
+  path: '/contact/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CommunityVoicesIndexRoute = CommunityVoicesIndexRouteImport.update({
@@ -216,8 +228,10 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/coaching': typeof CoachingIndexRoute
   '/community-voices': typeof CommunityVoicesIndexRoute
+  '/contact': typeof ContactIndexRoute
   '/productions': typeof ProductionsIndexRoute
   '/start': typeof StartIndexRoute
+  '/testimonials': typeof TestimonialsIndexRoute
   '/start/demo/clerk': typeof StartDemoClerkRoute
   '/start/demo/db-chat': typeof StartDemoDbChatRoute
   '/start/demo/db-chat-api': typeof StartDemoDbChatApiRoute
@@ -250,8 +264,10 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/coaching': typeof CoachingIndexRoute
   '/community-voices': typeof CommunityVoicesIndexRoute
+  '/contact': typeof ContactIndexRoute
   '/productions': typeof ProductionsIndexRoute
   '/start': typeof StartIndexRoute
+  '/testimonials': typeof TestimonialsIndexRoute
   '/start/demo/clerk': typeof StartDemoClerkRoute
   '/start/demo/db-chat': typeof StartDemoDbChatRoute
   '/start/demo/db-chat-api': typeof StartDemoDbChatApiRoute
@@ -285,8 +301,10 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/coaching/': typeof CoachingIndexRoute
   '/community-voices/': typeof CommunityVoicesIndexRoute
+  '/contact/': typeof ContactIndexRoute
   '/productions/': typeof ProductionsIndexRoute
   '/start/': typeof StartIndexRoute
+  '/testimonials/': typeof TestimonialsIndexRoute
   '/start/demo/clerk': typeof StartDemoClerkRoute
   '/start/demo/db-chat': typeof StartDemoDbChatRoute
   '/start/demo/db-chat-api': typeof StartDemoDbChatApiRoute
@@ -321,8 +339,10 @@ export interface FileRouteTypes {
     | '/'
     | '/coaching'
     | '/community-voices'
+    | '/contact'
     | '/productions'
     | '/start'
+    | '/testimonials'
     | '/start/demo/clerk'
     | '/start/demo/db-chat'
     | '/start/demo/db-chat-api'
@@ -355,8 +375,10 @@ export interface FileRouteTypes {
     | '/'
     | '/coaching'
     | '/community-voices'
+    | '/contact'
     | '/productions'
     | '/start'
+    | '/testimonials'
     | '/start/demo/clerk'
     | '/start/demo/db-chat'
     | '/start/demo/db-chat-api'
@@ -389,8 +411,10 @@ export interface FileRouteTypes {
     | '/'
     | '/coaching/'
     | '/community-voices/'
+    | '/contact/'
     | '/productions/'
     | '/start/'
+    | '/testimonials/'
     | '/start/demo/clerk'
     | '/start/demo/db-chat'
     | '/start/demo/db-chat-api'
@@ -424,8 +448,10 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CoachingIndexRoute: typeof CoachingIndexRoute
   CommunityVoicesIndexRoute: typeof CommunityVoicesIndexRoute
+  ContactIndexRoute: typeof ContactIndexRoute
   ProductionsIndexRoute: typeof ProductionsIndexRoute
   StartIndexRoute: typeof StartIndexRoute
+  TestimonialsIndexRoute: typeof TestimonialsIndexRoute
   StartDemoClerkRoute: typeof StartDemoClerkRoute
   StartDemoDbChatRoute: typeof StartDemoDbChatRoute
   StartDemoDbChatApiRoute: typeof StartDemoDbChatApiRoute
@@ -464,6 +490,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/testimonials/': {
+      id: '/testimonials/'
+      path: '/testimonials'
+      fullPath: '/testimonials'
+      preLoaderRoute: typeof TestimonialsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/start/': {
       id: '/start/'
       path: '/start'
@@ -476,6 +509,13 @@ declare module '@tanstack/react-router' {
       path: '/productions'
       fullPath: '/productions'
       preLoaderRoute: typeof ProductionsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact/': {
+      id: '/contact/'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/community-voices/': {
@@ -688,8 +728,10 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CoachingIndexRoute: CoachingIndexRoute,
   CommunityVoicesIndexRoute: CommunityVoicesIndexRoute,
+  ContactIndexRoute: ContactIndexRoute,
   ProductionsIndexRoute: ProductionsIndexRoute,
   StartIndexRoute: StartIndexRoute,
+  TestimonialsIndexRoute: TestimonialsIndexRoute,
   StartDemoClerkRoute: StartDemoClerkRoute,
   StartDemoDbChatRoute: StartDemoDbChatRoute,
   StartDemoDbChatApiRoute: StartDemoDbChatApiRoute,

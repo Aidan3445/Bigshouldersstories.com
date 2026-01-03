@@ -178,5 +178,25 @@ export default {
         ]
       }
     }
+  },
+  contact: {
+    header: {
+      text: "Contact Us",
+    },
+    sections: {
+      letsChat: {
+        title: "Let’s chat",
+        body: [
+          "Find out about custom workshops, events, individual coaching, or explore more about storytelling",
+          "Email "
+        ],
+        links: [
+          {
+            text: "suzy@bigshouldersstories.com",
+            href: "mailto:suzy@bigshouldersstories.com"
+          }
+        ]
+      }
+    }
   }
 }
