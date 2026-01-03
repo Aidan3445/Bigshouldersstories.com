@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as StartIndexRouteImport } from './routes/start/index'
 import { Route as ProductionsIndexRouteImport } from './routes/productions/index'
 import { Route as CommunityVoicesIndexRouteImport } from './routes/community-voices/index'
+import { Route as CoachingIndexRouteImport } from './routes/coaching/index'
 import { Route as StartDemoTanstackQueryRouteImport } from './routes/start/demo/tanstack-query'
 import { Route as StartDemoTanchatRouteImport } from './routes/start/demo/tanchat'
 import { Route as StartDemoStructuredRouteImport } from './routes/start/demo/structured'
@@ -59,6 +60,11 @@ const ProductionsIndexRoute = ProductionsIndexRouteImport.update({
 const CommunityVoicesIndexRoute = CommunityVoicesIndexRouteImport.update({
   id: '/community-voices/',
   path: '/community-voices/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CoachingIndexRoute = CoachingIndexRouteImport.update({
+  id: '/coaching/',
+  path: '/coaching/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const StartDemoTanstackQueryRoute = StartDemoTanstackQueryRouteImport.update({
@@ -208,6 +214,7 @@ const StartDemoStartSsrDataOnlyRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/coaching': typeof CoachingIndexRoute
   '/community-voices': typeof CommunityVoicesIndexRoute
   '/productions': typeof ProductionsIndexRoute
   '/start': typeof StartIndexRoute
@@ -241,6 +248,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/coaching': typeof CoachingIndexRoute
   '/community-voices': typeof CommunityVoicesIndexRoute
   '/productions': typeof ProductionsIndexRoute
   '/start': typeof StartIndexRoute
@@ -275,6 +283,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/coaching/': typeof CoachingIndexRoute
   '/community-voices/': typeof CommunityVoicesIndexRoute
   '/productions/': typeof ProductionsIndexRoute
   '/start/': typeof StartIndexRoute
@@ -310,6 +319,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/coaching'
     | '/community-voices'
     | '/productions'
     | '/start'
@@ -343,6 +353,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/coaching'
     | '/community-voices'
     | '/productions'
     | '/start'
@@ -376,6 +387,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/coaching/'
     | '/community-voices/'
     | '/productions/'
     | '/start/'
@@ -410,6 +422,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CoachingIndexRoute: typeof CoachingIndexRoute
   CommunityVoicesIndexRoute: typeof CommunityVoicesIndexRoute
   ProductionsIndexRoute: typeof ProductionsIndexRoute
   StartIndexRoute: typeof StartIndexRoute
@@ -470,6 +483,13 @@ declare module '@tanstack/react-router' {
       path: '/community-voices'
       fullPath: '/community-voices'
       preLoaderRoute: typeof CommunityVoicesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/coaching/': {
+      id: '/coaching/'
+      path: '/coaching'
+      fullPath: '/coaching'
+      preLoaderRoute: typeof CoachingIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/start/demo/tanstack-query': {
@@ -666,6 +686,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CoachingIndexRoute: CoachingIndexRoute,
   CommunityVoicesIndexRoute: CommunityVoicesIndexRoute,
   ProductionsIndexRoute: ProductionsIndexRoute,
   StartIndexRoute: StartIndexRoute,

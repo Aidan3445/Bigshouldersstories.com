@@ -102,5 +102,26 @@ export default {
     header: {
       headerText: "Past projects and events",
     }
+  },
+  coaching: {
+    header: {
+      headerText: "Workshops & Coaching",
+    },
+    sections: {
+      storytelling: {
+        title: "Storytelling workshops & coaching",
+        body: [
+          "In our storytelling workshops and individual coaching we start with the understanding that we each have a unique voice and style to share our personal stories. There’s no one way to craft a story, yet there are many ways to make a story better, even great! ",
+          "While we will explore and discuss the elements of a good story: the structure, the arc, the details,  blah blah blah… the exciting game changing part is when we delve into the “so what?” Why are you telling this story, who are you telling, and why now? ",
+          "In workshops or in one to one coaching, together we will explore these questions and work to craft the story you want to tell, or maybe the one you didn’t quite know you had in you!",
+        ]
+      },
+      collegeEssays: {
+        title: "College essay coaching",
+        body: [
+          "Helping high school seniors make friends with their Common App personal statements continues to be a favorite type of coaching work for me, guiding them tell their unique story in a memorable, well crafted, and meaningful way. I have come to recognize and anticipate the inevitable reveal of each student’s discovery of their “aha moment”- the secret sauce of a good essay! Sometimes there are tears, a smile, or contemplative quiet. Often just a simple–  “Okay, yeah… I got this.” There’s your story. My work here is done!"
+        ]
+      }
+    }
   }
 }
