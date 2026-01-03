@@ -163,6 +163,6 @@ code {
   }
   
   .body-white {
-    @apply text-xl font-bold text-gray-700 max-w-xl;
+    @apply text-2xl font-bold text-gray-700 max-w-xl;
   }
 }
