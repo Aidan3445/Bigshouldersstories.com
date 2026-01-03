@@ -22,7 +22,7 @@ export default function OurProcess() {
       </div>
       <img
         src="/flag_logo.png"
-        alt="Seeking human kindness"
+        alt="Big Shoulders Stories Flag Logo"
         className="w-100 h-100 object-cover" />
     </section>
   );
