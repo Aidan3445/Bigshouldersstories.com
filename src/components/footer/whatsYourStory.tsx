@@ -3,7 +3,7 @@ import copy from "@/lib/copy";
 
 export default function WhatsYourStory() {
   return (
-    <section className="section-white">
+    <section className="section-white border-t-4 border-t-sky-700">
       <h1 className="title-white">
         {copy.common.sections.contact.title}
       </h1>

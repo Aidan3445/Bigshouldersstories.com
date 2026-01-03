@@ -8,7 +8,7 @@ export default function Header() {
       className="relative h-200 mt-16 bg-cover bg-center flex flex-col items-center justify-center gap-6"
       style={{ backgroundImage: "url('/home_header.jpeg')" }}>
       <h1 className="text-white text-5xl font-extrabold bg-black/50 px-4 py-2 rounded text-center">
-        {copy.home.header.headerText}
+        {copy.home.header.text}
       </h1>
       <span className="flex gap-4 flex-wrap justify-center">
         <Link to="/community-voices">
@@ -16,7 +16,7 @@ export default function Header() {
             {copy.home.header.navigation.production}
           </Button>
         </Link>
-        <Link to="/"> {/* "/individual-voices">*/}
+        <Link to="/community-voices">
           <Button className="bg-blue-900 hover:bg-blue-700 text-white font-bold text-lg w-60">
             {copy.home.header.navigation.individual}
           </Button>
