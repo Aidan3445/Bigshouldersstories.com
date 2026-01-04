@@ -16,6 +16,7 @@ import { Route as ProductionsIndexRouteImport } from './routes/productions/index
 import { Route as ContactIndexRouteImport } from './routes/contact/index'
 import { Route as CommunityVoicesIndexRouteImport } from './routes/community-voices/index'
 import { Route as CoachingIndexRouteImport } from './routes/coaching/index'
+import { Route as ApiUploadthingRouteImport } from './routes/api/uploadthing'
 import { Route as StartDemoTanstackQueryRouteImport } from './routes/start/demo/tanstack-query'
 import { Route as StartDemoTanchatRouteImport } from './routes/start/demo/tanchat'
 import { Route as StartDemoStructuredRouteImport } from './routes/start/demo/structured'
@@ -77,6 +78,11 @@ const CommunityVoicesIndexRoute = CommunityVoicesIndexRouteImport.update({
 const CoachingIndexRoute = CoachingIndexRouteImport.update({
   id: '/coaching/',
   path: '/coaching/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiUploadthingRoute = ApiUploadthingRouteImport.update({
+  id: '/api/uploadthing',
+  path: '/api/uploadthing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const StartDemoTanstackQueryRoute = StartDemoTanstackQueryRouteImport.update({
@@ -226,6 +232,7 @@ const StartDemoStartSsrDataOnlyRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/api/uploadthing': typeof ApiUploadthingRoute
   '/coaching': typeof CoachingIndexRoute
   '/community-voices': typeof CommunityVoicesIndexRoute
   '/contact': typeof ContactIndexRoute
@@ -262,6 +269,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/api/uploadthing': typeof ApiUploadthingRoute
   '/coaching': typeof CoachingIndexRoute
   '/community-voices': typeof CommunityVoicesIndexRoute
   '/contact': typeof ContactIndexRoute
@@ -299,6 +307,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/api/uploadthing': typeof ApiUploadthingRoute
   '/coaching/': typeof CoachingIndexRoute
   '/community-voices/': typeof CommunityVoicesIndexRoute
   '/contact/': typeof ContactIndexRoute
@@ -337,6 +346,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/api/uploadthing'
     | '/coaching'
     | '/community-voices'
     | '/contact'
@@ -373,6 +383,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/api/uploadthing'
     | '/coaching'
     | '/community-voices'
     | '/contact'
@@ -409,6 +420,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/api/uploadthing'
     | '/coaching/'
     | '/community-voices/'
     | '/contact/'
@@ -446,6 +458,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ApiUploadthingRoute: typeof ApiUploadthingRoute
   CoachingIndexRoute: typeof CoachingIndexRoute
   CommunityVoicesIndexRoute: typeof CommunityVoicesIndexRoute
   ContactIndexRoute: typeof ContactIndexRoute
@@ -530,6 +543,13 @@ declare module '@tanstack/react-router' {
       path: '/coaching'
       fullPath: '/coaching'
       preLoaderRoute: typeof CoachingIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/uploadthing': {
+      id: '/api/uploadthing'
+      path: '/api/uploadthing'
+      fullPath: '/api/uploadthing'
+      preLoaderRoute: typeof ApiUploadthingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/start/demo/tanstack-query': {
@@ -726,6 +746,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ApiUploadthingRoute: ApiUploadthingRoute,
   CoachingIndexRoute: CoachingIndexRoute,
   CommunityVoicesIndexRoute: CommunityVoicesIndexRoute,
   ContactIndexRoute: ContactIndexRoute,
