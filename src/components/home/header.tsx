@@ -16,7 +16,7 @@ export default function Header() {
             {copy.home.header.navigation.production}
           </Button>
         </Link>
-        <Link to="/community-voices">
+        <Link to="/coaching">
           <Button className="bg-blue-900 hover:bg-blue-700 text-white font-bold text-lg w-60">
             {copy.home.header.navigation.individual}
           </Button>
