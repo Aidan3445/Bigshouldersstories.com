@@ -16,6 +16,7 @@ import {
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import { Plus, X } from "lucide-react";
+import { UploadButton } from "../uploadthing/utils";
 import SortableItem from "./sortable";
 import type {
   DragEndEvent
@@ -28,6 +29,7 @@ export type FormData = {
   name: string;
   description: string;
   videoUrl: string;
+  imageId: string | null;
   collaborators: string; // Comma-separated string input
 };
 
@@ -98,6 +100,7 @@ export default function Edit() {
       data: {
         ...data,
         collaborators,
+        imageId: 'hey',
         order: events.length,
       },
     });
@@ -194,6 +197,12 @@ export default function Edit() {
                   placeholder="John Doe, Jane Smith, ..."
                 />
                 <p className="text-xs text-gray-500 mt-1">Separate multiple names with commas</p>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Image Upload
+                </label>
+                <UploadButton endpoint="imageUploader" />
               </div>
               <button
                 type="submit"

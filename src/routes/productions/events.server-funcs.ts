@@ -10,6 +10,7 @@ export type EventData = {
   name: string;
   description: string;
   videoUrl: string;
+  imageId: string | null;
   createdAt: Date | null;
 };
 
@@ -19,6 +20,7 @@ type EventInsert = {
   name: string;
   description: string;
   videoUrl: string;
+  imageId: string;
 };
 
 export const getEventsData = createServerFn({

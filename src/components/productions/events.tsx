@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { cn } from "@/lib/utils";
 import { Route } from "@/routes/productions";
 
@@ -20,9 +21,21 @@ export default function Events() {
           <div className={cn(
             "w-full md:w-1/2 shrink-0",
             index % 2 === 0 ? "md:ml-8" : "md:mr-8")}>
-            <div className="aspect-4/3 bg-gray-300 rounded-sm shadow-lg flex items-center justify-center">
-              <span className="text-gray-500 text-sm">Event Image</span>
-            </div>
+            {event.imageId ? (
+              <a
+                href={event.videoUrl}
+                target="_blank"
+                rel="noopener noreferrer">
+                <img
+                  src={`${process.env.UPLOADTHING_IMAGE_URL}/${event.imageId}`}
+                  alt={event.name}
+                  className="w-full h-auto rounded-lg shadow-lg object-cover" />
+              </a>
+            ) : (
+              <div className="aspect-4/3 bg-gray-300 rounded-sm shadow-lg flex items-center justify-center">
+                <span className="text-gray-500 text-sm">Event Image</span>
+              </div>
+            )}
           </div>
           <div className={cn(
             "w-full md:w-1/2 space-y-4",
