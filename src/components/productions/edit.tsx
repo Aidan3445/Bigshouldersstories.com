@@ -16,14 +16,15 @@ import {
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import { Plus, X } from "lucide-react";
-import { UploadButton } from "../uploadthing/utils";
+import { useNavigate } from "@tanstack/react-router";
+import { UploadDropzone } from "../uploadthing/utils";
 import SortableItem from "./sortable";
 import type {
   DragEndEvent
 } from "@dnd-kit/core";
-import type { EventData } from "@/routes/productions/events.server-funcs";
-import { createEvent, deleteEvent, editEvent } from "@/routes/productions/events.server-funcs";
-import { Route } from "@/routes/productions";
+import type { EventData } from "@/routes/productions/edit/events.server-funcs";
+import { cleanUploads, createEvent, deleteEvent, editEvent } from "@/routes/productions/edit/events.server-funcs";
+import { Route } from "@/routes/productions/edit";
 
 export type FormData = {
   name: string;
@@ -34,6 +35,7 @@ export type FormData = {
 };
 
 export default function Edit() {
+  const router = useNavigate();
   const initialEventsData = Route.useLoaderData();
   const [events, setEvents] = useState<Array<EventData>>(initialEventsData);
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -122,11 +124,27 @@ export default function Edit() {
     }
   };
 
+  const handleFileSync = async () => {
+    const { success } = await cleanUploads();
+    if (!success) {
+      alert("Error during cleanup.");
+      return;
+    }
+    alert("Saved!");
+    router({ to: "/productions" });
+  };
+
   return (
     <section className="p-8 bg-gray-100 h-min">
       <div className="max-w-3xl mx-auto">
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-2xl font-bold text-gray-900">Edit Productions</h2>
+          <button
+            type="button"
+            onClick={() => handleFileSync()}
+            className="mr-auto ml-4 px-4 py-2 rounded-lg bg-green-600 text-white hover:bg-green-700 transition-colors">
+            Save and Publish
+          </button>
           <button
             type="button"
             onClick={() => setIsFormOpen(!isFormOpen)}
@@ -202,7 +220,7 @@ export default function Edit() {
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Image Upload
                 </label>
-                <UploadButton endpoint="imageUploader" />
+                <UploadDropzone endpoint="imageUploader" />
               </div>
               <button
                 type="submit"
@@ -230,8 +248,7 @@ export default function Edit() {
                   key={event.id}
                   event={event}
                   onEdit={handleEdit}
-                  onDelete={handleDelete}
-                />
+                  onDelete={handleDelete} />
               ))
             )}
           </SortableContext>

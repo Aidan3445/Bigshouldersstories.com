@@ -1,4 +1,4 @@
-import { createUploadthing } from "uploadthing/server";
+import { UTApi, createUploadthing } from "uploadthing/server";
 import type { FileRouter } from "uploadthing/server";
 
 const f = createUploadthing();
@@ -12,7 +12,7 @@ export const uploadRouter = {
   // Define as many FileRoutes as you like, each with a unique routeSlug
   imageUploader: f({
     image: {
-      maxFileSize: "4MB",
+      maxFileSize: "2MB",
       maxFileCount: 1,
     },
   })
@@ -37,4 +37,9 @@ export const uploadRouter = {
 } satisfies FileRouter;
 
 export type UploadRouter = typeof uploadRouter;
+
+export const utapi = new UTApi({
+  token: process.env.UPLOADTHING_API_KEY!,
+  defaultKeyType: "fileKey",
+});
 

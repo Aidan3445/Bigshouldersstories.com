@@ -1,7 +1,8 @@
 import { createServerFn } from "@tanstack/react-start";
-import { asc, eq } from "drizzle-orm";
+import { asc, eq, isNotNull } from "drizzle-orm";
 import { db } from "@/db";
 import { productions } from "@/db/schema";
+import { utapi } from "@/server/uploadthing";
 
 export type EventData = {
   id: number;
@@ -65,3 +66,26 @@ export const deleteEvent = createServerFn({
     return { success: true };
   });
 
+export const cleanUploads = createServerFn({
+  method: "POST",
+}).handler(async () => {
+  const usedImageIds = await db
+    .select({ imageId: productions.imageId })
+    .from(productions)
+    .where(isNotNull(productions.imageId))
+    .then((rows) => rows.map((row) => row.imageId!));
+
+  const allImageIds: Array<string> = [];
+  while (true) {
+    const { files, hasMore } = await utapi.listFiles();
+    allImageIds.push(...files.map((f) => f.key));
+    if (!hasMore) break;
+  }
+
+  const unusedImageIds = allImageIds.filter(
+    (id) => !usedImageIds.includes(id)
+  );
+
+  const { success, deletedCount } = await utapi.deleteFiles(unusedImageIds);
+  return { success, deletedCount, };
+});

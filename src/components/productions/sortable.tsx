@@ -3,12 +3,14 @@ import { useForm } from "react-hook-form";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { Check, GripVertical, Pencil, Trash2, X } from "lucide-react";
-import type { EventData } from "@/routes/productions/events.server-funcs";
+import { UploadButton } from "../uploadthing/utils";
+import type { EventData } from "@/routes/productions/edit/events.server-funcs";
 
 export type FormData = {
   name: string;
   description: string;
   videoUrl: string;
+  imageId: string | null;
   collaborators: Array<string>;
 };
 
@@ -26,13 +28,16 @@ export default function SortableItem({
     event.collaborators?.join(", ") ?? ""
   );
 
-  const { register, handleSubmit, reset } = useForm<Omit<FormData, "collaborators">>({
+  const { register, handleSubmit, reset, watch, setValue } = useForm<Omit<FormData, "collaborators">>({
     defaultValues: {
       name: event.name,
       description: event.description,
       videoUrl: event.videoUrl,
+      imageId: event.imageId,
     },
   });
+
+  const watchedImageId = watch("imageId");
 
   const {
     attributes,
@@ -100,6 +105,25 @@ export default function SortableItem({
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Collaborators (comma-separated)" />
               <p className="text-xs text-gray-500 mt-1">Separate names with commas</p>
+            </div>
+            <div className="flex gap-8">
+              {watchedImageId ? (
+                <img
+                  key={watchedImageId}
+                  src={`${import.meta.env.VITE_UPLOADTHING_IMAGE_URL}/${watchedImageId}`}
+                  alt={`Current image for ${event.name}`}
+                  className="w-32 h-auto object-cover rounded-md border border-gray-300" />
+              ) : (
+                <div className="w-32 h-20 bg-gray-100 rounded-md border border-gray-300 flex items-center justify-center">
+                  <span className="text-gray-500 text-sm">No Image</span>
+                </div>
+              )}
+              <UploadButton endpoint="imageUploader" onClientUploadComplete={(res) => {
+                if (res[0]) {
+                  const newImageId = res[0].key
+                  setValue("imageId", newImageId, { shouldDirty: true });
+                }
+              }} />
             </div>
             <div className="flex gap-2">
               <button

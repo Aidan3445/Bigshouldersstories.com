@@ -17,6 +17,7 @@ import { Route as ContactIndexRouteImport } from './routes/contact/index'
 import { Route as CommunityVoicesIndexRouteImport } from './routes/community-voices/index'
 import { Route as CoachingIndexRouteImport } from './routes/coaching/index'
 import { Route as ApiUploadthingRouteImport } from './routes/api/uploadthing'
+import { Route as ProductionsEditIndexRouteImport } from './routes/productions/edit/index'
 import { Route as StartDemoTanstackQueryRouteImport } from './routes/start/demo/tanstack-query'
 import { Route as StartDemoTanchatRouteImport } from './routes/start/demo/tanchat'
 import { Route as StartDemoStructuredRouteImport } from './routes/start/demo/structured'
@@ -83,6 +84,11 @@ const CoachingIndexRoute = CoachingIndexRouteImport.update({
 const ApiUploadthingRoute = ApiUploadthingRouteImport.update({
   id: '/api/uploadthing',
   path: '/api/uploadthing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductionsEditIndexRoute = ProductionsEditIndexRouteImport.update({
+  id: '/productions/edit/',
+  path: '/productions/edit/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const StartDemoTanstackQueryRoute = StartDemoTanstackQueryRouteImport.update({
@@ -248,6 +254,7 @@ export interface FileRoutesByFullPath {
   '/start/demo/structured': typeof StartDemoStructuredRoute
   '/start/demo/tanchat': typeof StartDemoTanchatRoute
   '/start/demo/tanstack-query': typeof StartDemoTanstackQueryRoute
+  '/productions/edit': typeof ProductionsEditIndexRoute
   '/start/demo/api/available-providers': typeof StartDemoApiAvailableProvidersRoute
   '/start/demo/api/image': typeof StartDemoApiImageRoute
   '/start/demo/api/names': typeof StartDemoApiNamesRoute
@@ -285,6 +292,7 @@ export interface FileRoutesByTo {
   '/start/demo/structured': typeof StartDemoStructuredRoute
   '/start/demo/tanchat': typeof StartDemoTanchatRoute
   '/start/demo/tanstack-query': typeof StartDemoTanstackQueryRoute
+  '/productions/edit': typeof ProductionsEditIndexRoute
   '/start/demo/api/available-providers': typeof StartDemoApiAvailableProvidersRoute
   '/start/demo/api/image': typeof StartDemoApiImageRoute
   '/start/demo/api/names': typeof StartDemoApiNamesRoute
@@ -323,6 +331,7 @@ export interface FileRoutesById {
   '/start/demo/structured': typeof StartDemoStructuredRoute
   '/start/demo/tanchat': typeof StartDemoTanchatRoute
   '/start/demo/tanstack-query': typeof StartDemoTanstackQueryRoute
+  '/productions/edit/': typeof ProductionsEditIndexRoute
   '/start/demo/api/available-providers': typeof StartDemoApiAvailableProvidersRoute
   '/start/demo/api/image': typeof StartDemoApiImageRoute
   '/start/demo/api/names': typeof StartDemoApiNamesRoute
@@ -362,6 +371,7 @@ export interface FileRouteTypes {
     | '/start/demo/structured'
     | '/start/demo/tanchat'
     | '/start/demo/tanstack-query'
+    | '/productions/edit'
     | '/start/demo/api/available-providers'
     | '/start/demo/api/image'
     | '/start/demo/api/names'
@@ -399,6 +409,7 @@ export interface FileRouteTypes {
     | '/start/demo/structured'
     | '/start/demo/tanchat'
     | '/start/demo/tanstack-query'
+    | '/productions/edit'
     | '/start/demo/api/available-providers'
     | '/start/demo/api/image'
     | '/start/demo/api/names'
@@ -436,6 +447,7 @@ export interface FileRouteTypes {
     | '/start/demo/structured'
     | '/start/demo/tanchat'
     | '/start/demo/tanstack-query'
+    | '/productions/edit/'
     | '/start/demo/api/available-providers'
     | '/start/demo/api/image'
     | '/start/demo/api/names'
@@ -474,6 +486,7 @@ export interface RootRouteChildren {
   StartDemoStructuredRoute: typeof StartDemoStructuredRoute
   StartDemoTanchatRoute: typeof StartDemoTanchatRoute
   StartDemoTanstackQueryRoute: typeof StartDemoTanstackQueryRoute
+  ProductionsEditIndexRoute: typeof ProductionsEditIndexRoute
   StartDemoApiAvailableProvidersRoute: typeof StartDemoApiAvailableProvidersRoute
   StartDemoApiImageRoute: typeof StartDemoApiImageRoute
   StartDemoApiNamesRoute: typeof StartDemoApiNamesRoute
@@ -550,6 +563,13 @@ declare module '@tanstack/react-router' {
       path: '/api/uploadthing'
       fullPath: '/api/uploadthing'
       preLoaderRoute: typeof ApiUploadthingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/productions/edit/': {
+      id: '/productions/edit/'
+      path: '/productions/edit'
+      fullPath: '/productions/edit'
+      preLoaderRoute: typeof ProductionsEditIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/start/demo/tanstack-query': {
@@ -762,6 +782,7 @@ const rootRouteChildren: RootRouteChildren = {
   StartDemoStructuredRoute: StartDemoStructuredRoute,
   StartDemoTanchatRoute: StartDemoTanchatRoute,
   StartDemoTanstackQueryRoute: StartDemoTanstackQueryRoute,
+  ProductionsEditIndexRoute: ProductionsEditIndexRoute,
   StartDemoApiAvailableProvidersRoute: StartDemoApiAvailableProvidersRoute,
   StartDemoApiImageRoute: StartDemoApiImageRoute,
   StartDemoApiNamesRoute: StartDemoApiNamesRoute,

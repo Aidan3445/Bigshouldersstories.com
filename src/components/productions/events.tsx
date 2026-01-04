@@ -1,4 +1,3 @@
-import { Link } from "@tanstack/react-router";
 import { cn } from "@/lib/utils";
 import { Route } from "@/routes/productions";
 
@@ -27,7 +26,7 @@ export default function Events() {
                 target="_blank"
                 rel="noopener noreferrer">
                 <img
-                  src={`${process.env.UPLOADTHING_IMAGE_URL}/${event.imageId}`}
+                  src={`${import.meta.env.VITE_UPLOADTHING_IMAGE_URL}/${event.imageId}`}
                   alt={event.name}
                   className="w-full h-auto rounded-lg shadow-lg object-cover" />
               </a>
