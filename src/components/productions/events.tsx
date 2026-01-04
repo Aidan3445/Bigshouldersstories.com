@@ -6,6 +6,11 @@ export default function Events() {
 
   return (
     <>
+      <section className="section-white">
+        <h2 className="title-white text-center mb-0">
+          Big Shoulders Stories Presents:
+        </h2>
+      </section>
       {eventsData.map((event, index) => (
         <section
           key={event.id}
@@ -22,12 +27,16 @@ export default function Events() {
           <div className={cn(
             "w-full md:w-1/2 space-y-4",
             index % 2 === 0 ? "md:mr-8" : "md:ml-8")}>
-            <h2 className={cn(
-              "text-3xl md:text-4xl italic text-left",
-              index % 2 === 0 ? "title-white" : "title-blue")}>
-              Big Shoulders Stories Presents:
-            </h2>
-            <h3 className="text-2xl md:text-3xl font-bold text-[#f96b3d] text-left">
+            {event.collaborators && event.collaborators.length > 0 && (
+              <h2 className={cn(
+                "text-xl md:text-2xl text-left",
+                index % 2 === 0 ? "title-white" : "title-blue")}>
+                In collaboration with:
+                <br />
+                <i>{event.collaborators.join(", ")}</i>
+              </h2>
+            )}
+            <h3 className="text-3xl md:text-4xl font-bold text-[#f96b3d] text-left">
               {event.name}
             </h3>
             <p className={cn(

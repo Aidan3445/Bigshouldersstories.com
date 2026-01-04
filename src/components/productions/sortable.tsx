@@ -3,20 +3,13 @@ import { useForm } from "react-hook-form";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { Check, GripVertical, Pencil, Trash2, X } from "lucide-react";
-
-export type EventData = {
-  id: number;
-  name: string;
-  createdAt: Date | null;
-  order: number;
-  description: string;
-  videoUrl: string;
-};
+import type { EventData } from "@/routes/productions/events.server-funcs";
 
 export type FormData = {
   name: string;
   description: string;
   videoUrl: string;
+  collaborators: Array<string>;
 };
 
 export default function SortableItem({
@@ -29,7 +22,11 @@ export default function SortableItem({
   onDelete: (id: number) => void;
 }) {
   const [isEditing, setIsEditing] = useState(false);
-  const { register, handleSubmit, reset } = useForm<FormData>({
+  const [collaboratorsInput, setCollaboratorsInput] = useState(
+    event.collaborators?.join(", ") ?? ""
+  );
+
+  const { register, handleSubmit, reset } = useForm<Omit<FormData, "collaborators">>({
     defaultValues: {
       name: event.name,
       description: event.description,
@@ -51,13 +48,19 @@ export default function SortableItem({
     transition,
   };
 
-  const handleSave = (data: FormData) => {
-    onEdit(event.id, data);
+  const handleSave = (data: Omit<FormData, "collaborators">) => {
+    const collaborators = collaboratorsInput
+      .split(",")
+      .map((c) => c.trim())
+      .filter((c) => c.length > 0);
+
+    onEdit(event.id, { ...data, collaborators });
     setIsEditing(false);
   };
 
   const handleCancel = () => {
     reset();
+    setCollaboratorsInput(event.collaborators?.join(", ") ?? "");
     setIsEditing(false);
   };
 
@@ -66,13 +69,15 @@ export default function SortableItem({
       ref={setNodeRef}
       style={style}
       className={`bg-white rounded-lg shadow-sm border border-gray-200 p-4 mb-2 ${isDragging ? "opacity-50 shadow-lg" : ""
-        }`}>
+        }`}
+    >
       <div className="flex items-start gap-3">
         <button
           type="button"
           className="mt-1 cursor-grab active:cursor-grabbing text-gray-400 hover:text-gray-600"
           {...attributes}
-          {...listeners}>
+          {...listeners}
+        >
           <GripVertical size={20} />
         </button>
 
@@ -94,17 +99,28 @@ export default function SortableItem({
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Video URL"
             />
+            <div>
+              <input
+                value={collaboratorsInput}
+                onChange={(e) => setCollaboratorsInput(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Collaborators (comma-separated)"
+              />
+              <p className="text-xs text-gray-500 mt-1">Separate names with commas</p>
+            </div>
             <div className="flex gap-2">
               <button
                 type="submit"
-                className="flex items-center gap-1 px-3 py-1.5 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors">
+                className="flex items-center gap-1 px-3 py-1.5 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors"
+              >
                 <Check size={16} />
                 Save
               </button>
               <button
                 type="button"
                 onClick={handleCancel}
-                className="flex items-center gap-1 px-3 py-1.5 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition-colors">
+                className="flex items-center gap-1 px-3 py-1.5 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition-colors"
+              >
                 <X size={16} />
                 Cancel
               </button>
@@ -118,13 +134,15 @@ export default function SortableItem({
                 <button
                   type="button"
                   onClick={() => setIsEditing(true)}
-                  className="p-1.5 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded transition-colors">
+                  className="p-1.5 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded transition-colors"
+                >
                   <Pencil size={16} />
                 </button>
                 <button
                   type="button"
                   onClick={() => onDelete(event.id)}
-                  className="p-1.5 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded transition-colors">
+                  className="p-1.5 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded transition-colors"
+                >
                   <Trash2 size={16} />
                 </button>
               </div>
@@ -134,6 +152,18 @@ export default function SortableItem({
             )}
             {event.videoUrl && (
               <p className="text-xs text-blue-500 mt-1 truncate">{event.videoUrl}</p>
+            )}
+            {event.collaborators && event.collaborators.length > 0 && (
+              <div className="flex flex-wrap gap-1 mt-2">
+                {event.collaborators.map((collaborator, index) => (
+                  <span
+                    key={index}
+                    className="px-2 py-0.5 bg-gray-100 text-gray-700 text-xs rounded-full"
+                  >
+                    {collaborator}
+                  </span>
+                ))}
+              </div>
             )}
           </div>
         )}

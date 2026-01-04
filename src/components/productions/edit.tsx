@@ -17,23 +17,33 @@ import {
 } from "@dnd-kit/sortable";
 import { Plus, X } from "lucide-react";
 import SortableItem from "./sortable";
-import type { EventData, FormData } from "./sortable";
 import type {
   DragEndEvent
 } from "@dnd-kit/core";
+import type { EventData } from "@/routes/productions/events.server-funcs";
 import { createEvent, deleteEvent, editEvent } from "@/routes/productions/events.server-funcs";
 import { Route } from "@/routes/productions";
+
+export type FormData = {
+  name: string;
+  description: string;
+  videoUrl: string;
+  collaborators: string; // Comma-separated string input
+};
 
 export default function Edit() {
   const initialEventsData = Route.useLoaderData();
   const [events, setEvents] = useState<Array<EventData>>(initialEventsData);
   const [isFormOpen, setIsFormOpen] = useState(false);
 
+  const [collaboratorsInput, setCollaboratorsInput] = useState("");
+
   const { register, handleSubmit, reset } = useForm<FormData>({
     defaultValues: {
       name: "",
       description: "",
       videoUrl: "",
+      collaborators: "",
     },
   });
 
@@ -80,13 +90,19 @@ export default function Edit() {
   };
 
   const handleCreate = (data: FormData) => {
+    const collaborators = collaboratorsInput
+      .split(",")
+      .map((name) => name.trim())
+      .filter((name) => name.length > 0);
     createMutation.mutate({
       data: {
         ...data,
+        collaborators,
         order: events.length,
       },
     });
     reset();
+    setCollaboratorsInput("");
     setIsFormOpen(false);
   };
 
@@ -166,6 +182,18 @@ export default function Edit() {
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="https://..."
                 />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Collaborators
+                </label>
+                <input
+                  value={collaboratorsInput}
+                  onChange={(e) => setCollaboratorsInput(e.target.value)}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="John Doe, Jane Smith, ..."
+                />
+                <p className="text-xs text-gray-500 mt-1">Separate multiple names with commas</p>
               </div>
               <button
                 type="submit"

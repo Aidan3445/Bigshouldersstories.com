@@ -9,6 +9,7 @@ export const todos = pgTable('todos', {
 export const productions = pgTable('productions', {
   id: serial().primaryKey(),
   order: smallint('order').notNull(),
+  collaborators: varchar('collaborators', { length: 512 }).array(),
   name: varchar('name', { length: 512 }).notNull(),
   description: text('description').notNull(),
   videoUrl: varchar('video_url', { length: 512 }).notNull(),
