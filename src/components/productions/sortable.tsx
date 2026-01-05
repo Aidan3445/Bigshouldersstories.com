@@ -177,6 +177,12 @@ export default function SortableItem({
                 ))}
               </div>
             )}
+            {event.imageId && (
+              <img
+                src={`${import.meta.env.VITE_UPLOADTHING_IMAGE_URL}/${event.imageId}`}
+                alt={`Image for ${event.name}`}
+                className="w-32 h-auto object-cover rounded-md border border-gray-300 mt-2" />
+            )}
           </div>
         )}
       </div>
