@@ -10,7 +10,6 @@ const config = defineConfig({
   plugins: [
     devtools(),
     netlify(),
-    // this is the plugin that enables path aliases
     viteTsConfigPaths({
       projects: ['./tsconfig.json'],
     }),
@@ -22,6 +21,11 @@ const config = defineConfig({
       },
     }),
   ],
+  server: {
+    allowedHosts: [
+      '3e70e0b26699.ngrok-free.app'
+    ]
+  }
 })
 
 export default config

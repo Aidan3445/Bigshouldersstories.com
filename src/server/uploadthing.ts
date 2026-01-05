@@ -1,11 +1,8 @@
 import { UTApi, createUploadthing } from "uploadthing/server";
+import { auth } from "./auth";
 import type { FileRouter } from "uploadthing/server";
 
 const f = createUploadthing();
-
-const auth = async (_req: Request) => (new Promise<{ id: string }>((resolve) => {
-  resolve({ id: "user_1234" });
-}));
 
 // FileRouter for your app, can contain multiple FileRoutes
 export const uploadRouter = {
@@ -17,19 +14,16 @@ export const uploadRouter = {
     },
   })
     // Set permissions and file types for this FileRoute
-    .middleware(async ({ req }) => {
+    .middleware(() => {
       // This code runs on your server before upload
-      const user = await auth(req);
-
-      // If you throw, the user will not be able to upload
-      // if (!user) throw new UploadThingError("Unauthorized");
+      auth();
 
       // Whatever is returned here is accessible in onUploadComplete as `metadata`
-      return { userId: user.id };
+      return {};
     })
-    .onUploadComplete(({ metadata, file }) => {
+    .onUploadComplete(({ file }) => {
       return {
-        uploadedBy: metadata.userId,
+        uploadedBy: "suzy",
         fileId: file.key,
         fileName: file.name,
       };

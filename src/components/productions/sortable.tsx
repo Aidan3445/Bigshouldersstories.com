@@ -4,7 +4,7 @@ import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { Check, GripVertical, Pencil, Trash2, X } from "lucide-react";
 import { UploadButton } from "../uploadthing/utils";
-import type { EventData } from "@/routes/productions/edit/events.server-funcs";
+import type { EventData } from "@/server/events";
 
 export type FormData = {
   name: string;

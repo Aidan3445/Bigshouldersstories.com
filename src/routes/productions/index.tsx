@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { getEventsData } from '@/routes/productions/edit/events.server-funcs';
+import { getEventsData } from '@/server/events';
 import WhatsYourStory from '@/components/footer/whatsYourStory'
 import Header from '@/components/productions/header';
 import Events from '@/components/productions/events';

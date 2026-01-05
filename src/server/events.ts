@@ -1,5 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { asc, eq, isNotNull } from "drizzle-orm";
+import { auth } from "./auth";
 import { db } from "@/db";
 import { productions } from "@/db/schema";
 import { utapi } from "@/server/uploadthing";
@@ -38,6 +39,11 @@ export const createEvent = createServerFn({
   method: "POST",
 }).inputValidator((data: EventInsert) => data)
   .handler(async ({ data }) => {
+    const status = await auth();
+    if (status && 'error' in status) {
+      throw new Error("Unauthorized");
+    }
+
     await db
       .insert(productions)
       .values({ ...data, });
@@ -48,6 +54,11 @@ export const editEvent = createServerFn({
   method: "POST",
 }).inputValidator((data: Partial<EventData> & { id: number }) => data)
   .handler(async ({ data }) => {
+    const status = await auth();
+    if (status && 'error' in status) {
+      throw new Error("Unauthorized");
+    }
+
     const { id, ...updateData } = data;
     await db
       .update(productions)
@@ -60,6 +71,11 @@ export const deleteEvent = createServerFn({
   method: "POST",
 }).inputValidator((data: { id: number }) => data)
   .handler(async ({ data }) => {
+    const status = await auth();
+    if (status && 'error' in status) {
+      throw new Error("Unauthorized");
+    }
+
     await db
       .delete(productions)
       .where(eq(productions.id, data.id));
@@ -69,6 +85,11 @@ export const deleteEvent = createServerFn({
 export const cleanUploads = createServerFn({
   method: "POST",
 }).handler(async () => {
+  const status = await auth();
+  if (status && 'error' in status) {
+    throw new Error("Unauthorized");
+  }
+
   const usedImageIds = await db
     .select({ imageId: productions.imageId })
     .from(productions)

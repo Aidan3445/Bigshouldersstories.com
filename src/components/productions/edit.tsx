@@ -22,8 +22,8 @@ import SortableItem from "./sortable";
 import type {
   DragEndEvent
 } from "@dnd-kit/core";
-import type { EventData } from "@/routes/productions/edit/events.server-funcs";
-import { cleanUploads, createEvent, deleteEvent, editEvent } from "@/routes/productions/edit/events.server-funcs";
+import type { EventData } from "@/server/events";
+import { cleanUploads, createEvent, deleteEvent, editEvent } from "@/server/events";
 import { Route } from "@/routes/productions/edit";
 
 export type FormData = {
@@ -58,12 +58,19 @@ export default function Edit() {
     })
   );
 
+  const onError = () => {
+    alert("Unauthorized.");
+    router({ to: "/productions" });
+  }
+
   const createMutation = useMutation({
     mutationFn: createEvent,
+    onError
   });
 
   const editMutation = useMutation({
     mutationFn: editEvent,
+    onError
   });
 
   const deleteMutation = useMutation({
@@ -71,6 +78,7 @@ export default function Edit() {
     onSuccess: (_, variables) => {
       setEvents((prev) => prev.filter((e) => e.id !== variables.data.id));
     },
+    onError
   });
 
   const handleDragEnd = (event: DragEndEvent) => {
@@ -125,13 +133,19 @@ export default function Edit() {
   };
 
   const handleFileSync = async () => {
-    const { success } = await cleanUploads();
-    if (!success) {
-      alert("Error during cleanup.");
-      return;
+    try {
+      const { success } = await cleanUploads();
+      if (!success) {
+        alert("Error during cleanup.");
+        return;
+      }
+      alert("Saved!");
+    } catch (error) {
+      alert("Unauthorized.");
+    } finally {
+      router({ to: "/productions" });
     }
-    alert("Saved!");
-    router({ to: "/productions" });
+
   };
 
   return (
