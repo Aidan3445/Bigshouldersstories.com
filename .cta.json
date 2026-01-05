@@ -16,7 +16,6 @@
     "eslint",
     "netlify",
     "start",
-    "clerk",
     "compiler",
     "db",
     "drizzle",
