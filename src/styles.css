@@ -55,28 +55,6 @@ code {
   --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
   --sidebar-border: oklch(0.92 0.004 286.32);
   --sidebar-ring: oklch(0.871 0.006 286.286);
-
-  /* Animations */
-  --animate-fade-in: fade-in 0.5s ease-in forwards;
-  --animate-fade-out: fade-out 0.5s ease-out forwards;
-
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  @keyframes fade-out {
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 0;
-    }
-  }
 }
 
 .dark {
