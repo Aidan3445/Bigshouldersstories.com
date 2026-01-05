@@ -50,6 +50,13 @@ export default {
           "It is a powerful experience to work with individuals as they identify and craft a personal story in new and deeper ways. It’s a magical “aha moment” when they challenge, change, or reclaim their own narrative– they are not the same as when they began.",
           "Guiding people on this journey to find their unique voice, build their confidence, and help them share their stories is why stories matter and why we love this work."
         ]
+      },
+      myStory: {
+        title: "My story",
+        body: [
+          "A born and bred Chicagoan, I’m a writer, producer, and active community leader. I’ve had many roles in my personal and professional career that all center on the power of storytelling. It’s always been about telling the stories that make people listen, care, and ultimately take action.",
+          "In 2019 I launched Big Shoulders Stories, harnessing my skills, talents, and deep commitment to better lives in Chicago into a focused offering: partnering with Chicago’s nonprofit organizations to identify, nurture, and showcase their storytellers and their stories."
+        ]
       }
     }
   },
