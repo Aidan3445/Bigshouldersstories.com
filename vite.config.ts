@@ -22,7 +22,8 @@ const config = defineConfig({
     }),
   ],
   server: {
-    allowedHosts: []
+    allowedHosts: [
+    ]
   }
 })
 

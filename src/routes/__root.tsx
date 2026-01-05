@@ -33,6 +33,13 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
         rel: 'stylesheet',
         href: appCss,
       },
+      { rel: 'preload', href: '/header.png', as: 'image' },
+      { rel: 'preload', href: '/home_header.jpg', as: 'image' },
+      { rel: 'preload', href: '/voices_header.jpg', as: 'image' },
+      { rel: 'preload', href: '/productions_header.jpg', as: 'image' },
+      { rel: 'preload', href: '/coaching_header.jpg', as: 'image' },
+      { rel: 'preload', href: '/testimonials_header.jpg', as: 'image' },
+      { rel: 'preload', href: '/contact_header.jpg', as: 'image' },
     ],
   }),
 
