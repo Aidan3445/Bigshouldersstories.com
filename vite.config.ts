@@ -22,9 +22,7 @@ const config = defineConfig({
     }),
   ],
   server: {
-    allowedHosts: [
-      'cb3b322d2aaa.ngrok-free.app'
-    ]
+    allowedHosts: []
   }
 })
 
