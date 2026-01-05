@@ -50,7 +50,7 @@ export default function Header() {
             className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-300 transition-colors mb-2"
             activeProps={{
               className:
-                'flex items-center gap-3 p-3 rounded-lg bg-gray-500 hover:bg-gray-400 transition-colors mb-2',
+                'flex items-center gap-3 p-3 rounded-lg text-white bg-gray-500 hover:bg-gray-400 transition-colors mb-2',
             }}>
             <Home size={20} />
             <span className="font-medium">Home</span>
@@ -61,7 +61,7 @@ export default function Header() {
             className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-300 transition-colors mb-2"
             activeProps={{
               className:
-                'flex items-center gap-3 p-3 rounded-lg bg-gray-500 hover:bg-gray-400 transition-colors mb-2',
+                'flex items-center gap-3 p-3 rounded-lg text-white bg-gray-500 hover:bg-gray-400 transition-colors mb-2',
             }}>
             <Users size={20} />
             <span className="font-medium">Community Voices</span>
@@ -72,7 +72,7 @@ export default function Header() {
             className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-300 transition-colors mb-2"
             activeProps={{
               className:
-                'flex items-center gap-3 p-3 rounded-lg bg-gray-500 hover:bg-gray-400 transition-colors mb-2',
+                'flex items-center gap-3 p-3 rounded-lg text-white bg-gray-500 hover:bg-gray-400 transition-colors mb-2',
             }}>
             <MicVocal size={20} />
             <span className="font-medium">Productions</span>
@@ -83,7 +83,7 @@ export default function Header() {
             className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-300 transition-colors mb-2"
             activeProps={{
               className:
-                'flex items-center gap-3 p-3 rounded-lg bg-gray-500 hover:bg-gray-400 transition-colors mb-2',
+                'flex items-center gap-3 p-3 rounded-lg text-white bg-gray-500 hover:bg-gray-400 transition-colors mb-2',
             }}>
             <NotebookPen size={20} />
             <span className="font-medium">Coaching</span>
@@ -94,7 +94,7 @@ export default function Header() {
             className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-300 transition-colors mb-2"
             activeProps={{
               className:
-                'flex items-center gap-3 p-3 rounded-lg bg-gray-500 hover:bg-gray-400 transition-colors mb-2',
+                'flex items-center gap-3 p-3 rounded-lg text-white bg-gray-500 hover:bg-gray-400 transition-colors mb-2',
             }}>
             <Quote size={20} />
             <span className="font-medium">Testimonials</span>
@@ -105,7 +105,7 @@ export default function Header() {
             className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-300 transition-colors mb-2"
             activeProps={{
               className:
-                'flex items-center gap-3 p-3 rounded-lg bg-gray-500 hover:bg-gray-400 transition-colors mb-2',
+                'flex items-center gap-3 p-3 rounded-lg text-white bg-gray-500 hover:bg-gray-400 transition-colors mb-2',
             }}>
             <Mail size={20} />
             <span className="font-medium">Contact</span>

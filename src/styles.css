@@ -3,9 +3,7 @@
 @import 'tw-animate-css';
 @import "uploadthing/tw/v4";
 @source "../node_modules/@uploadthing/react/dist";
-
-
-@custom-variant dark (&:is(.dark *));
+@import "tailwindcss/preflight"
 
 body {
   @apply m-0;
@@ -139,8 +137,6 @@ code {
     @apply bg-background text-foreground;
   }
 }
-
-/* In your global.css or styles.css */
 
 @layer components {
   /* Blue theme */
