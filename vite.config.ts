@@ -20,7 +20,12 @@ const config = defineConfig({
         plugins: ['babel-plugin-react-compiler'],
       },
     }),
-  ]
+  ],
+  server: {
+    allowedHosts: [
+      'cb3b322d2aaa.ngrok-free.app'
+    ]
+  }
 })
 
 export default config
