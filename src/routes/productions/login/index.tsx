@@ -1,6 +1,8 @@
 import { useMutation } from '@tanstack/react-query'
 import { createFileRoute, redirect, useNavigate } from '@tanstack/react-router'
 import { useForm } from 'react-hook-form'
+import { useState } from 'react'
+import { Eye, EyeClosed } from 'lucide-react'
 import { getAuthStatus, login } from '@/server/auth'
 
 export const Route = createFileRoute('/productions/login/')({
@@ -25,7 +27,8 @@ type FormData = {
 
 function RouteComponent() {
   const router = useNavigate();
-  const { register, handleSubmit, setValue } = useForm<FormData>();
+  const { register, handleSubmit, setValue, setFocus } = useForm<FormData>();
+  const [showPassword, setShowPassword] = useState(false);
 
   const loginMutation = useMutation({
     mutationFn: login,
@@ -50,6 +53,11 @@ function RouteComponent() {
     loginMutation.mutate({ data });
   };
 
+  const onShowPasswordToggle = () => {
+    setShowPassword((prev) => !prev);
+    setFocus('password');
+  }
+
   return (
     <main className="mt-16">
       <h1 className="text-2xl font-bold text-center">Login Page</h1>
@@ -63,12 +71,19 @@ function RouteComponent() {
             className="block text-sm font-medium text-gray-700">
             Password
           </label>
-          <input
-            type="password"
-            id="password"
-            placeholder="Enter your password"
-            {...register('password', { required: true })}
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" />
+          <span className="relative flex items-center">
+            <input
+              type={showPassword ? 'text' : 'password'}
+              id="password"
+              placeholder="Enter your password"
+              {...register('password', { required: true })}
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" />
+            {showPassword ? (
+              <Eye className='absolute right-3' onClick={onShowPasswordToggle} />
+            ) : (
+              <EyeClosed className='absolute right-3' onClick={onShowPasswordToggle} />
+            )}
+          </span>
         </div>
         <button
           type="submit"
@@ -76,7 +91,7 @@ function RouteComponent() {
           {loginMutation.isPending ? 'Logging in...' : 'Login'}
         </button>
       </form>
-    </main>
+    </main >
   );
 
 
