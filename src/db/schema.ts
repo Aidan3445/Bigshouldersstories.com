@@ -23,5 +23,5 @@ export const authAttempts = pgTable('auth_attempts', {
   ipAddress: varchar('ip_address', { length: 45 }).notNull().unique(),
   attempts: smallint('attempts').notNull().default(1),
   locked: boolean('locked').notNull().default(false),
-  createdAt: timestamp('created_at').defaultNow(),
+  createdAt: timestamp('created_at').notNull().defaultNow()
 })

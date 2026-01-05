@@ -25,15 +25,24 @@ type FormData = {
 
 function RouteComponent() {
   const router = useNavigate();
-  const { register, handleSubmit } = useForm<FormData>();
+  const { register, handleSubmit, setValue } = useForm<FormData>();
 
   const loginMutation = useMutation({
     mutationFn: login,
     onError: () => {
       alert('Login failed. Please check your credentials.');
     },
-    onSuccess: () => {
-      router({ to: '/productions/edit' });
+    onSuccess: ({ success, error, redirectTo }) => {
+      if (!success) {
+        alert(`Login failed: ${error}`);
+        setValue('password', '');
+      } else {
+        router({ to: '/productions/edit' });
+      }
+
+      if (redirectTo) {
+        router({ to: redirectTo });
+      }
     },
   });
 
@@ -44,6 +53,7 @@ function RouteComponent() {
   return (
     <main className="mt-16">
       <h1 className="text-2xl font-bold text-center">Login Page</h1>
+      <p> {import.meta.env.VITE_TOP_SECRET_HASH} </p>
       <form
         className="max-w-md mx-auto mt-8 flex flex-col gap-4"
         onSubmit={handleSubmit(onSubmit)}>
@@ -56,6 +66,7 @@ function RouteComponent() {
           <input
             type="password"
             id="password"
+            placeholder="Enter your password"
             {...register('password', { required: true })}
             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" />
         </div>

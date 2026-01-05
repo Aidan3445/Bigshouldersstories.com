@@ -25,6 +25,7 @@ import type {
 import type { EventData } from "@/server/events";
 import { cleanUploads, createEvent, deleteEvent, editEvent } from "@/server/events";
 import { Route } from "@/routes/productions/edit";
+import { logout } from "@/server/auth";
 
 export type FormData = {
   name: string;
@@ -143,6 +144,7 @@ export default function Edit() {
     } catch (error) {
       alert("Unauthorized.");
     } finally {
+      logout();
       router({ to: "/productions" });
     }
 
