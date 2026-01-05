@@ -3,7 +3,7 @@ import copy from "@/lib/copy";
 
 export default function Section4() {
   return (
-    <section className='section-white flex gap-8 justify-around flex-wrap borde'>
+    <section className='section-white grid gap-9 grid-cols-1 md:grid-cols-2 justify-items-center'>
       <Quote
         quote={copy.testimonials.sections.quote5.body[0]}
         name={copy.testimonials.sections.quote5.body[1]}

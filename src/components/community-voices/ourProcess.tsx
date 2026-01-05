@@ -23,7 +23,7 @@ export default function OurProcess() {
       <img
         src="/flag_logo.png"
         alt="Big Shoulders Stories Flag Logo"
-        className="w-100 h-100 object-cover" />
+        className="w-100 h-auto object-cover" />
     </section>
   );
 }

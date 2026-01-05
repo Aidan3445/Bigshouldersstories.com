@@ -5,13 +5,13 @@ interface QuoteProps {
   name: string;
   title: string;
   parity: "white" | "blue";
-  titleClassName?: string;
+  quoteClassName?: string;
 }
 
-export default function Quote({ quote, name, title, parity, titleClassName }: QuoteProps) {
+export default function Quote({ quote, name, title, parity, quoteClassName }: QuoteProps) {
   return (
     <div>
-      <p className={cn(`body-${parity} mb-4 text-left`, titleClassName)}>
+      <p className={cn(`body-${parity} mb-4 text-left`, quoteClassName)}>
         {quote}
       </p>
       <p className={`body-${parity} text-sm italic text-left`}>

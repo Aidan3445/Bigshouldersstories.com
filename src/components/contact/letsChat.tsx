@@ -13,8 +13,7 @@ export default function LetsChat() {
         {copy.contact.sections.letsChat.body[1]}{' '}
         <a
           href={copy.common.sections.contact.links[0].href}
-          className="text-blue-600 underline"
-        >
+          className="text-blue-600 underline">
           {copy.common.sections.contact.links[0].text}
         </a>
         .

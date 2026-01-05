@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router'
 
 import { useState } from 'react'
-import { Mail, Menu, MicVocal, NotebookPen, Quote, Users, X } from 'lucide-react'
+import { Home, Mail, Menu, MicVocal, NotebookPen, Quote, Users, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 export default function Header() {
@@ -9,20 +9,19 @@ export default function Header() {
 
   return (
     <>
-      <header className="p-4 h-16 flex items-center bg-white text-black shadow-lg fixed top-0 left-0 right-0 z-40">
+      <header className="pr-2 md:p-4 h-16 flex items-center bg-white text-black shadow-lg fixed top-0 left-0 right-0 z-40">
         <button
           onClick={() => setIsOpen(true)}
           className="p-2 hover:bg-gray-300 rounded-lg transition-colors"
           aria-label="Open menu">
           <Menu size={24} />
         </button>
-        <h1 className="ml-4 text-xl font-semibold">
+        <h1 className="md:ml-4 text-xl font-semibold">
           <Link to="/">
             <img
               src="/header.png"
               alt="Big Shoulders Stories Logo"
-              className="h-10"
-            />
+              className="h-10 mt-1" />
           </Link>
         </h1>
       </header>
@@ -32,8 +31,7 @@ export default function Header() {
           !isOpen && "pointer-events-none opacity-0"
         )}
         onClick={() => setIsOpen(false)}
-        aria-hidden="true"
-      />
+        aria-hidden="true" />
       <aside
         className={`fixed top-0 left-0 h-full w-80 bg-gray-100 text-black shadow-2xl z-50 transform transition-transform duration-300 ease-in-out flex flex-col ${isOpen ? 'translate-x-0' : '-translate-x-full'
           }`}>
@@ -46,6 +44,17 @@ export default function Header() {
           </button>
         </div>
         <nav className="flex-1 p-4 overflow-y-auto">
+          <Link
+            to="/"
+            onClick={() => setIsOpen(false)}
+            className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-300 transition-colors mb-2"
+            activeProps={{
+              className:
+                'flex items-center gap-3 p-3 rounded-lg bg-gray-500 hover:bg-gray-400 transition-colors mb-2',
+            }}>
+            <Home size={20} />
+            <span className="font-medium">Home</span>
+          </Link>
           <Link
             to="/community-voices"
             onClick={() => setIsOpen(false)}

@@ -65,8 +65,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
             },
             AiDevtools,
             TanStackQueryDevtools,
-          ]}
-        />
+          ]} />
         <Scripts />
       </body>
     </html>

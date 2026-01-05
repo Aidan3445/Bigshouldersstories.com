@@ -11,8 +11,7 @@ export default function WhatsYourStory() {
         {copy.common.sections.contact.body[0]}{' '}
         <a
           href={copy.common.sections.contact.links[0].href}
-          className="text-blue-600 underline"
-        >
+          className="text-blue-600 underline">
           {copy.common.sections.contact.links[0].text}
         </a>
         .

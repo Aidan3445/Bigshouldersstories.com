@@ -8,7 +8,7 @@ export default function Section3() {
         quote={copy.testimonials.sections.quote4.body[0]}
         name={copy.testimonials.sections.quote4.body[1]}
         title={copy.testimonials.sections.quote4.body[2]}
-        titleClassName="max-w-6xl"
+        quoteClassName="max-w-6xl"
         parity="blue" />
     </section>
   );
