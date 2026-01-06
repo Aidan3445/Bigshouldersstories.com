@@ -4,7 +4,7 @@ export default function WhyWeDoIt() {
   return (
     <section
       className="relative h-150 bg-cover bg-center flex flex-col gap-6 pt-32"
-      style={{ backgroundImage: "url('/notebook.jpeg')" }}>
+      style={{ backgroundImage: "url('/notebook.jpg')" }}>
       <span className="grid grid-cols-2 gap-8 px-4">
         <h1 className="w-full title-white text-center justify-self-end max-w-72 min-[870px]:max-w-none min-[870px]:pl-28">
           {copy.home.sections.whyWeDoIt.title}
