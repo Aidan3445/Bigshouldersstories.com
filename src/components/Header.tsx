@@ -3,6 +3,7 @@ import { Link } from '@tanstack/react-router'
 import { useState } from 'react'
 import { Home, Mail, Menu, MicVocal, NotebookPen, Quote, Users, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import copy from '@/lib/copy'
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
@@ -64,7 +65,7 @@ export default function Header() {
                 'flex items-center gap-3 p-3 rounded-lg text-white bg-gray-500 hover:bg-gray-400 transition-colors mb-2',
             }}>
             <Users size={20} />
-            <span className="font-medium">Community Voices</span>
+            <span className="font-medium">{copy["community-voices"].header.text}</span>
           </Link>
           <Link
             to="/productions"
@@ -75,7 +76,7 @@ export default function Header() {
                 'flex items-center gap-3 p-3 rounded-lg text-white bg-gray-500 hover:bg-gray-400 transition-colors mb-2',
             }}>
             <MicVocal size={20} />
-            <span className="font-medium">Productions</span>
+            <span className="font-medium">{copy.productions.header.text}</span>
           </Link>
           <Link
             to="/coaching"
@@ -86,7 +87,7 @@ export default function Header() {
                 'flex items-center gap-3 p-3 rounded-lg text-white bg-gray-500 hover:bg-gray-400 transition-colors mb-2',
             }}>
             <NotebookPen size={20} />
-            <span className="font-medium">Coaching</span>
+            <span className="font-medium">{copy.coaching.header.text}</span>
           </Link>
           <Link
             to="/testimonials"
@@ -97,7 +98,7 @@ export default function Header() {
                 'flex items-center gap-3 p-3 rounded-lg text-white bg-gray-500 hover:bg-gray-400 transition-colors mb-2',
             }}>
             <Quote size={20} />
-            <span className="font-medium">Testimonials</span>
+            <span className="font-medium">{copy.testimonials.header.text}</span>
           </Link>
           <Link
             to="/contact"
@@ -108,7 +109,7 @@ export default function Header() {
                 'flex items-center gap-3 p-3 rounded-lg text-white bg-gray-500 hover:bg-gray-400 transition-colors mb-2',
             }}>
             <Mail size={20} />
-            <span className="font-medium">Contact</span>
+            <span className="font-medium">{copy.contact.header.text}</span>
           </Link>
         </nav>
       </aside>

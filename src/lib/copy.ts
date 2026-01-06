@@ -107,7 +107,7 @@ export default {
   },
   productions: {
     header: {
-      text: "Past projects and events",
+      text: "Productions",
     }
   },
   coaching: {
@@ -121,7 +121,7 @@ export default {
           "Together we will work to craft the story you want to tell,",
           "or maybe the one you didn’t quite know you had in you!",
           "In our storytelling workshops and individual coaching we start with the understanding that we each have a unique voice and style to share our personal stories. There’s no one way to craft a story, yet there are many ways to make a story better, even great! ",
-          "While we will explore and discuss the elements of a good story: the structure, the arc, the details,  blah blah blah… the exciting game changing part is when we delve into the “so what?” Why are you telling this story, who are you telling, and why now? "
+          "While we will explore and discuss the elements of a good story, the structure, the arc, the details,  blah blah blah… the exciting game changing part is when we delve into the “so what?” Why are you telling this story, who are you telling, and why now? "
         ]
       },
       collegeEssays: {
