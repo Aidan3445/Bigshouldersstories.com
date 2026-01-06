@@ -5,7 +5,7 @@ export default function WhyStoriesMatter() {
     <section className="section-blue">
       <span className="flex justify-evenly items-center flex-wrap gap-8">
         <img
-          src="/fonda.jpeg"
+          src="/fonda.jpg"
           alt="Seeking human kindness"
           className="w-150 h-100 object-cover rounded-lg shadow-lg mb-4" />
         <div className="max-w-md">
