@@ -11,7 +11,7 @@ export default function OurProcess() {
           <p className="body-white text-left">
             {copy["community-voices"].sections.ourProcess.body[0]}
           </p>
-          <ul className="body-white list-disc text-left">
+          <ul className="body-white list-disc text-left ml-5">
             <li>{copy["community-voices"].sections.ourProcess.body[1]}</li>
             <li>{copy["community-voices"].sections.ourProcess.body[2]}</li>
             <li>{copy["community-voices"].sections.ourProcess.body[3]}</li>

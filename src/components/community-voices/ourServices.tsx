@@ -8,7 +8,7 @@ export default function OurServices() {
           {copy["community-voices"].sections.ourServices.title}
         </h1>
         <div className="grid md:grid-cols-2 gap-8">
-          <ul className="body-blue list-disc space-y-2 text-left">
+          <ul className="body-blue list-disc space-y-2 text-left ml-5">
             {copy["community-voices"].sections.ourServices.body.slice(0, 4).map((item, i) => (
               <li key={i}>{item}</li>
             ))}
