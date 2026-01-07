@@ -13,7 +13,7 @@ export default function Nav() {
       <header className="pr-2 md:p-4 h-16 flex items-center bg-white text-black shadow-lg fixed top-0 left-0 right-0 z-40">
         <button
           onClick={() => setIsOpen(true)}
-          className="p-2 hover:bg-gray-300 rounded-lg transition-colors"
+          className="p-1 mx-0.5 sm:p-2 hover:bg-gray-300 rounded-md transition-colors"
           aria-label="Open menu">
           <Menu size={24} />
         </button>
