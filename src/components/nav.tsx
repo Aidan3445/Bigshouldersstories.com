@@ -5,7 +5,7 @@ import { Home, Mail, Menu, MicVocal, NotebookPen, Quote, Users, X } from 'lucide
 import { cn } from '@/lib/utils'
 import copy from '@/lib/copy'
 
-export default function Header() {
+export default function Nav() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (

@@ -1,6 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
-import Header from '@/components/contact/header';
 import LetsChat from '@/components/contact/letsChat';
+import { HeaderImage } from '@/components/headerImage';
+import copy from '@/lib/copy';
 
 export const Route = createFileRoute('/contact/')({
   component: RouteComponent,
@@ -9,7 +10,7 @@ export const Route = createFileRoute('/contact/')({
 function RouteComponent() {
   return (
     <main>
-      <Header />
+      <HeaderImage imageSrc="/contact_header.jpg" headerText={copy.contact.header.text} />
       <LetsChat />
     </main>
   );

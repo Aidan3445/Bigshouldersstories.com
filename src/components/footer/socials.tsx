@@ -6,7 +6,7 @@ import copy from "@/lib/copy";
 
 export default function Socials() {
   return (
-    <span className="flex gap-4">
+    <span className="flex gap-4 mt-8">
       <Instagram size={32} color="#000000" href={copy.common.socials.instagram} />
       <Facebook size={32} color="#000000" href={copy.common.socials.facebook} />
       <YouTube size={32} color="#000000" href={copy.common.socials.youTube} />
