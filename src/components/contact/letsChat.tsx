@@ -1,4 +1,4 @@
-import Socials from "../footer/socials";
+import FooterNav from "../footer/navLinks";
 import copy from "@/lib/copy";
 
 export default function LetsChat() {
@@ -18,13 +18,7 @@ export default function LetsChat() {
         </a>
         .
       </p>
-      <div className="flex justify-between items-end">
-        <Socials />
-        <img
-          src="/flag_logo.png"
-          alt="Big Shoulders Stories Flag Logo"
-          className="w-50 h-50 object-cover xl:absolute xl:right-4 -mb-6" />
-      </div>
+      <FooterNav />
     </section>
   );
 }
