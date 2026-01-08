@@ -7,12 +7,6 @@ export default {
           "Interested in learning more? Send a message to",
           "We’d love to hear your story!"
         ],
-        links: [
-          {
-            text: "suzy@bigshouldersstories.com",
-            href: "mailto:suzy@bigshouldersstories.com"
-          }
-        ]
       }
     },
     socials: {
