@@ -56,6 +56,8 @@ export default function ContactForm({ defaultExpanded = false }: ContactFormProp
           }`}>
         <form
           onSubmit={handleSubmit(onSubmit)}
+          data-netlify="true"
+          method="POST"
           className="space-y-6 pt-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
