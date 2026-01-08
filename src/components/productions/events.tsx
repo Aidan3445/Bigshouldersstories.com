@@ -15,7 +15,7 @@ export default function Events() {
         <section
           key={event.id}
           className={cn(
-            "flex flex-col md:flex-row gap-8 md:gap-12 items-center px-16",
+            "flex flex-col md:flex-row gap-8 md:gap-12 items-center md:px-16",
             index % 2 === 0 ? "section-white" : "section-blue md:flex-row-reverse")}>
           <div className={cn(
             "w-full md:w-1/2 shrink-0",

@@ -110,7 +110,7 @@ export default {
     },
     sections: {
       storytelling: {
-        title: "Storytelling workshops & coaching",
+        title: "Storytelling workshops",
         body: [
           "Together we will work to craft the story you want to tell,",
           "or maybe the one you didn’t quite know you had in you!",

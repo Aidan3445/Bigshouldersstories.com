@@ -149,7 +149,7 @@ code {
   }
   
   .body-blue {
-    @apply text-2xl font-bold text-gray-200 max-w-xl text-pretty;
+    @apply text-2xl font-bold text-gray-200 max-w-xl text-pretty text-left md:text-center;
   }
 
   /* White theme */
@@ -162,6 +162,6 @@ code {
   }
   
   .body-white {
-    @apply text-2xl font-bold text-gray-700 max-w-xl text-pretty;
+    @apply text-2xl font-bold text-gray-700 max-w-xl text-pretty text-left md:text-center;
   }
 }

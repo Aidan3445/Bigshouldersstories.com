@@ -1,5 +1,5 @@
-import FooterNav from "./navLinks";
 import ContactForm from "../contact/contactForm";
+import FooterNav from "./navLinks";
 import copy from "@/lib/copy";
 
 export default function WhatsYourStory() {
@@ -8,7 +8,7 @@ export default function WhatsYourStory() {
       <h1 className="title-white">
         {copy.common.sections.contact.title}
       </h1>
-      <p className="body-white mx-auto max-w-none mb-12">
+      <p className="body-white text-center mx-auto max-w-none mb-12">
         {copy.common.sections.contact.body[1]}
       </p>
       <ContactForm />
