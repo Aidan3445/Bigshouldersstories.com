@@ -1,6 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { getRequestHeaders } from "@tanstack/react-start/server";
-import { count, eq } from "drizzle-orm";
+import { count, eq, or } from "drizzle-orm";
 import { Resend } from "resend";
 import { db } from "@/db";
 import { formSubmissions } from "@/db/schema";
@@ -43,10 +43,13 @@ export const sendContactMessage = createServerFn({
     const messagesSentFromIP = await db
       .select({ count: count() })
       .from(formSubmissions)
-      .where(eq(formSubmissions.ipAddress, ip));
+      .where(or(
+        eq(formSubmissions.ipAddress, ip),
+        eq(formSubmissions.email, data.email)
+      ));
 
     if (messagesSentFromIP[0].count >= 10) {
-      console.error("IP address has exceeded message submission limit.", { ip, data });
+      console.error("IP address or email has exceeded message submission limit.", { ip, data });
       throw new Error("Sorry, you cant submit any more messages at this time.");
     }
 
