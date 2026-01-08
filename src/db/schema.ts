@@ -19,3 +19,12 @@ export const authAttempts = pgTable('auth_attempts', {
   locked: boolean('locked').notNull().default(false),
   createdAt: timestamp('created_at').notNull().defaultNow()
 })
+
+export const formSubmissions = pgTable('form_submissions', {
+  id: serial().primaryKey(),
+  name: varchar('name', { length: 256 }).notNull(),
+  email: varchar('email', { length: 256 }).notNull(),
+  message: text('message').notNull(),
+  ipAddress: varchar('ip_address', { length: 45 }),
+  createdAt: timestamp('created_at').notNull().defaultNow()
+})

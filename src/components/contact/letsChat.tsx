@@ -1,4 +1,5 @@
 import FooterNav from "../footer/navLinks";
+import ContactForm from "./contactForm";
 import copy from "@/lib/copy";
 
 export default function LetsChat() {
@@ -7,17 +8,10 @@ export default function LetsChat() {
       <h1 className="title-white">
         {copy.contact.sections.letsChat.title}
       </h1>
-      <p className="body-white text-left mx-auto max-w-3xl">
+      <p className="body-white text-left mx-auto max-w-3xl mb-12">
         {copy.contact.sections.letsChat.body[0]}
-        <br />
-        {copy.contact.sections.letsChat.body[1]}{' '}
-        <a
-          href={copy.common.sections.contact.links[0].href}
-          className="text-blue-600 underline">
-          {copy.common.sections.contact.links[0].text}
-        </a>
-        .
       </p>
+      <ContactForm defaultExpanded={true} />
       <FooterNav />
     </section>
   );
