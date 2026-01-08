@@ -3,19 +3,19 @@ import copy from '@/lib/copy';
 export default function WhyWeDoIt() {
   return (
     <section
-      className="relative h-150 bg-cover bg-center flex flex-col gap-6 pt-32"
+      className="relative h-150 bg-cover bg-center flex flex-col items-center justify-center"
       style={{ backgroundImage: "url('/notebook.jpg')" }}>
-      <span className="grid grid-cols-2 gap-8 px-4">
-        <h1 className="w-full title-white text-center justify-self-end max-w-72 min-[870px]:max-w-none min-[870px]:pl-28">
+      <div className="grid grid-cols-2 grid-rows-[auto_auto] gap-4 px-2 max-w-[620px] min-[865px]:max-w-none min-[865px]:pl-[12.5%] min-[865px]:pr-[13%]">
+        <h1 className="col-start-1 row-start-1 w-full title-white text-center">
           {copy.home.sections.whyWeDoIt.title}
         </h1>
-        <p className="w-full body-white mb-4 text-sm md:text-base lg:text-lg xl:text-xl leading-tight justify-self-start max-w-72 min-[870px]:max-w-none min-[870px]:pr-44">
+        <p className="col-start-1 row-start-2 w-full text-left body-white text-sm md:text-base lg:text-lg xl:text-xl leading-tight">
           {copy.home.sections.whyWeDoIt.body[0]}
-          <br />
-          <br />
+        </p>
+        <p className="col-start-2 row-start-2 w-full text-left body-white text-sm md:text-base lg:text-lg xl:text-xl leading-tight">
           {copy.home.sections.whyWeDoIt.body[1]}
         </p>
-      </span>
+      </div>
     </section>
   );
 }
