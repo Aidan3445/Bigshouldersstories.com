@@ -121,7 +121,7 @@ export default {
       collegeEssays: {
         title: "College essay coaching",
         body: [
-          "Helping high school seniors make friends with their Common App personal statements continues to be a favorite type of coaching work for me, guiding them tell their unique story in a memorable, well crafted, and meaningful way. I have come to recognize and anticipate the inevitable reveal of each student’s discovery of their “aha moment”- the secret sauce of a good essay! Sometimes there are tears, a smile, or contemplative quiet. Often just a simple–  “Okay, yeah… I got this.” There’s your story. My work here is done!"
+          "Helping high school seniors make friends with their Common App personal statements continues to be a favorite type of coaching work for me, guiding them to tell their unique story in a memorable, well crafted, and meaningful way. I have come to recognize and anticipate the inevitable reveal of each student’s discovery of their “aha moment”- the secret sauce of a good essay! Sometimes there are tears, a smile, or contemplative quiet. Often just a simple–  “Okay, yeah… I got this.” There’s your story. My work here is done!"
         ]
       }
     }
@@ -162,14 +162,14 @@ export default {
         body: [
           "Suzy is uniquely gifted. I worked with Suzy to craft and share a story which was very personal to me and which I was extremely nervous to share publicly. Suzy’s passion for storytelling goes beyond skill-building and content creation as she meets people where they are and helps them push past their own mental boundaries by encouraging them to find their true voice and tell their story in a unique and compelling way. Suzy’s patience, understanding, feedback, support and allyship truly helped me understand how to successfully push past these mental barriers and write and speak with full truth and raw honesty. I am forever grateful to Suzy for the tremendous amount of time, effort and intention that she puts into this work and I would encourage anyone to invest in themselves by working with Suzy to learn to speak and write skillfully and authentically.",
           "Amber Townsend",
-          "Chicago Scholars, Executive Fellow"
+          "Lurie Cancer Center of Northwestern University, Administrative Lead"
         ]
       },
       quote5: {
         body: [
           "Working with Suzy and the Big Shoulders team reignited my love for creative writing! Having the space and platform to share my story was empowering and unforgettable!",
           "LaShawn Holloway",
-          "Chicago Scholars, Associate Director of Donor & Alumni Relations"
+          "Director of Chicago Partnerships, Braven"
         ]
       },
       quote6: {
