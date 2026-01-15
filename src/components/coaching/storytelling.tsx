@@ -9,7 +9,7 @@ export default function Storytelling() {
         </h1>
         <p className="body-white w-full max-w-none">
           {copy.coaching.sections.storytelling.body[0]}
-          <br />
+          <br className="hidden md:block" />{' '}
           {copy.coaching.sections.storytelling.body[1]}
         </p>
         <div className="grid md:grid-cols-2 gap-8 mt-8">
